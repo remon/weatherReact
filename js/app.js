@@ -1,10 +1,13 @@
 const weatherUrl = "http://api.apixu.com/v1/current.json?";
 const api_key = " d757771d0163492ca9a192755182611";
 
-class WeatherForm extends React.Component {
-  constructor(props) {
-    super(props);
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
   }
+  return true;
+}
+class WeatherForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.onSubmit}>
@@ -39,7 +42,7 @@ class WeatherContainer extends React.Component {
     this.state = {
       current_search: "",
       error: false,
-      loading: true,
+      loading: false,
       searchData: {}
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -56,6 +59,9 @@ class WeatherContainer extends React.Component {
     e.preventDefault();
     let search = this.state.current_search;
     const that = this;
+    this.setState({
+      loading: true
+    });
     axios
       .get(weatherUrl, {
         params: {
@@ -73,9 +79,36 @@ class WeatherContainer extends React.Component {
       })
       .catch(function(error) {
         console.log(error);
+      })
+      .then(function() {
+        that.setState({
+          loading: false
+        });
       });
   }
   render() {
+    const searchData = this.state.searchData;
+    const isLoading = this.state.loading;
+    let subForm;
+    let loadingGif = "";
+
+    if (isLoading) {
+      loadingGif = (
+        <div className="loading_gif">
+          <img src="images/loader.png" />
+        </div>
+      );
+    }
+
+    if (isEmpty(searchData)) {
+      subForm = "";
+    } else {
+      subForm = (
+        <div className="city_data">
+          <CityData />
+        </div>
+      );
+    }
     return (
       <div className="weathercontainer">
         <h1 className="weather_title"> Get Weather Info</h1>
@@ -87,9 +120,8 @@ class WeatherContainer extends React.Component {
             value={this.state.current_search}
           />
         </div>
-        <div className="city_data">
-          <CityData />
-        </div>
+        {subForm}
+        {loadingGif}
       </div>
     );
   }

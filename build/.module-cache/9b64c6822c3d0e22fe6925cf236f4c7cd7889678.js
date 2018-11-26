@@ -28,9 +28,6 @@ class WeatherForm extends React.Component {
   }
 }
 class CityData extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return React.createElement("h1", null, "Data Returned");
   }
@@ -81,9 +78,9 @@ class WeatherContainer extends React.Component {
         console.log(error);
       })
       .then(function() {
-        that.setState({
-          loading: false
-        });
+        // that.setState({
+        //   loading: false
+        // });
       });
   }
   render() {
@@ -95,7 +92,7 @@ class WeatherContainer extends React.Component {
     if (isLoading) {
       loadingGif = (
         React.createElement("div", {className: "loading_gif"}, 
-          React.createElement("img", {src: "images/loader.png"})
+          React.createElement("img", {src: "images/loader.gif"})
         )
       );
     }

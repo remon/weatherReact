@@ -43,3 +43,7 @@ body {
 .sub_cont {
   text-align: center;
 }
+.loading_gif {
+  text-align: center;
+  padding: 15px 0px;
+}

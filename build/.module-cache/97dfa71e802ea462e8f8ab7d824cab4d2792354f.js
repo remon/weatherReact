@@ -8,6 +8,9 @@ function isEmpty(obj) {
   return true;
 }
 class WeatherForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       React.createElement("form", {onSubmit: this.props.onSubmit}, 
@@ -42,7 +45,7 @@ class WeatherContainer extends React.Component {
     this.state = {
       current_search: "",
       error: false,
-      loading: false,
+      loading: true,
       searchData: {}
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -59,9 +62,6 @@ class WeatherContainer extends React.Component {
     e.preventDefault();
     let search = this.state.current_search;
     const that = this;
-    this.setState({
-      loading: true
-    });
     axios
       .get(weatherUrl, {
         params: {
@@ -79,26 +79,12 @@ class WeatherContainer extends React.Component {
       })
       .catch(function(error) {
         console.log(error);
-      })
-      .then(function() {
-        that.setState({
-          loading: false
-        });
       });
   }
   render() {
     const searchData = this.state.searchData;
-    const isLoading = this.state.loading;
-    let subForm;
-    let loadingGif = "";
 
-    if (isLoading) {
-      loadingGif = (
-        React.createElement("div", {className: "loading_gif"}, 
-          React.createElement("img", {src: "images/loader.png"})
-        )
-      );
-    }
+    let subForm;
 
     if (isEmpty(searchData)) {
       subForm = "";
@@ -120,8 +106,7 @@ class WeatherContainer extends React.Component {
             value: this.state.current_search}
           )
         ), 
-        subForm, 
-        loadingGif
+        subForm
       )
     );
   }

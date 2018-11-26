@@ -28,9 +28,6 @@ class WeatherForm extends React.Component {
   }
 }
 class CityData extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return React.createElement("h1", null, "Data Returned");
   }
@@ -81,7 +78,7 @@ class WeatherContainer extends React.Component {
         console.log(error);
       })
       .then(function() {
-        that.setState({
+        this.setState({
           loading: false
         });
       });
@@ -120,8 +117,7 @@ class WeatherContainer extends React.Component {
             value: this.state.current_search}
           )
         ), 
-        subForm, 
-        loadingGif
+        subForm
       )
     );
   }
