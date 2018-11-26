@@ -28,6 +28,12 @@ class WeatherForm extends React.Component {
   }
 }
 class CityData extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city_data: {}
+    };
+  }
   render() {
     const city = this.props.city;
     const location = this.props.location;
@@ -35,13 +41,7 @@ class CityData extends React.Component {
     console.log(location);
     return (
       React.createElement("div", {className: "city_container"}, 
-        React.createElement("h3", null, 
-          location.name, " , ", location.region, " ,", location.country
-        ), 
-        React.createElement("h4", null, " Local Time : ", location.localtime), 
-
-        React.createElement("h5", null, " Temperature (C) : ", city.temp_c), 
-        React.createElement("h5", null, " Temperature (F) : ", city.temp_f)
+        React.createElement("h5", null)
       )
     );
   }
@@ -115,10 +115,9 @@ class WeatherContainer extends React.Component {
       subForm = "";
     } else {
       const current_data = this.state.searchData.current;
-      const location = this.state.searchData.location;
       subForm = (
         React.createElement("div", {className: "city_data"}, 
-          React.createElement(CityData, {city: current_data, location: location})
+          React.createElement(CityData, {city: current_data})
         )
       );
     }

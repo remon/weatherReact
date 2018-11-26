@@ -38,10 +38,7 @@ class CityData extends React.Component {
         React.createElement("h3", null, 
           location.name, " , ", location.region, " ,", location.country
         ), 
-        React.createElement("h4", null, " Local Time : ", location.localtime), 
-
-        React.createElement("h5", null, " Temperature (C) : ", city.temp_c), 
-        React.createElement("h5", null, " Temperature (F) : ", city.temp_f)
+        React.createElement("h4", null, " Local Time : ", location.localtime)
       )
     );
   }
