@@ -4,38 +4,6 @@ const api_key = " d757771d0163492ca9a192755182611";
 class WeatherForm extends React.Component {
   constructor(props) {
     super(props);
-  }
-  render() {
-    return (
-      React.createElement("form", {onSubmit: this.props.onSubmit}, 
-        React.createElement("div", {className: "input-group input-group-lg city_name_wrapper"}, 
-          React.createElement("input", {
-            required: true, 
-            className: "form-control", 
-            value: this.props.value, 
-            onChange: this.props.onChange}
-          )
-        ), 
-
-        React.createElement("div", {className: "sub_cont"}, 
-          React.createElement("button", {className: "btn btn-success btn-lg"}, " Get Data ")
-        )
-      )
-    );
-  }
-}
-class CityData extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return React.createElement("h1", null, "Data Returned");
-  }
-}
-class WeatherContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
     this.state = {
       current_search: "",
       error: false,
@@ -74,6 +42,26 @@ class WeatherContainer extends React.Component {
       .catch(function(error) {
         console.log(error);
       });
+    //console.log(this.state.current_search);
+  }
+  render() {
+    return (
+      React.createElement("form", {onSubmit: this.handleSubmit}, 
+        React.createElement("div", {className: "form-group row"}, 
+          React.createElement("input", {
+            value: this.state.current_search, 
+            onChange: this.handleInputChange}
+          )
+        ), 
+        React.createElement("button", {className: "btn btn-success"}, " Submit ")
+      )
+    );
+  }
+}
+
+class WeatherContainer extends React.Component {
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
@@ -81,14 +69,7 @@ class WeatherContainer extends React.Component {
         React.createElement("h1", {className: "weather_title"}, " Get Weather Info"), 
         React.createElement("div", {className: "weather_cont"}, 
           React.createElement("h5", null, "Enter the city name here"), 
-          React.createElement(WeatherForm, {
-            onSubmit: this.handleSubmit, 
-            onChange: this.handleInputChange, 
-            value: this.state.current_search}
-          )
-        ), 
-        React.createElement("div", {className: "city_data"}, 
-          React.createElement(CityData, null)
+          React.createElement(WeatherForm, null)
         )
       )
     );

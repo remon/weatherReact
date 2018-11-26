@@ -7,20 +7,20 @@ class WeatherForm extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.props.onSubmit}>
-        <div className="input-group input-group-lg city_name_wrapper">
-          <input
-            required={true}
-            className="form-control"
-            value={this.props.value}
-            onChange={this.props.onChange}
-          />
-        </div>
+      React.createElement("form", {onSubmit: this.props.onSubmit}, 
+        React.createElement("div", {className: "input-group input-group-lg city_name_wrapper"}, 
+          React.createElement("input", {
+            required: true, 
+            className: "form-control", 
+            value: this.props.current_search, 
+            onChange: this.handleInputChange}
+          )
+        ), 
 
-        <div className="sub_cont">
-          <button className="btn btn-success btn-lg"> Get Data </button>
-        </div>
-      </form>
+        React.createElement("div", {className: "sub_cont"}, 
+          React.createElement("button", {className: "btn btn-success btn-lg"}, " Get Data ")
+        )
+      )
     );
   }
 }
@@ -29,7 +29,7 @@ class CityData extends React.Component {
     super(props);
   }
   render() {
-    return <h1>Data Returned</h1>;
+    return React.createElement("h1", null, "Data Returned");
   }
 }
 class WeatherContainer extends React.Component {
@@ -77,21 +77,17 @@ class WeatherContainer extends React.Component {
   }
   render() {
     return (
-      <div className="weathercontainer">
-        <h1 className="weather_title"> Get Weather Info</h1>
-        <div className="weather_cont">
-          <h5>Enter the city name here</h5>
-          <WeatherForm
-            onSubmit={this.handleSubmit}
-            onChange={this.handleInputChange}
-            value={this.state.current_search}
-          />
-        </div>
-        <div className="city_data">
-          <CityData />
-        </div>
-      </div>
+      React.createElement("div", {className: "weathercontainer"}, 
+        React.createElement("h1", {className: "weather_title"}, " Get Weather Info"), 
+        React.createElement("div", {className: "weather_cont"}, 
+          React.createElement("h5", null, "Enter the city name here"), 
+          React.createElement(WeatherForm, null)
+        ), 
+        React.createElement("div", {className: "city_data"}, 
+          React.createElement(CityData, null)
+        )
+      )
     );
   }
 }
-ReactDOM.render(<WeatherContainer />, document.getElementById("root"));
+ReactDOM.render(React.createElement(WeatherContainer, null), document.getElementById("root"));
