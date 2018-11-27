@@ -146,8 +146,7 @@ class WeatherContainer extends React.Component {
           )
         ), 
         subForm, 
-        loadingGif, 
-        isError ? "There is an error loading your search , try again" : ""
+        loadingGif
       )
     );
   }

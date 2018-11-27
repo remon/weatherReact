@@ -74,13 +74,12 @@ class WeatherContainer extends React.Component {
     e.preventDefault();
     let search = this.state.current_search;
     const that = this;
-
     this.setState({
-      loading: true,
-      searchData: {},
-      error: false
+      loading: true
     });
-
+    this.setState({
+      searchData: {}
+    });
     axios
       .get(weatherUrl, {
         params: {
@@ -103,15 +102,13 @@ class WeatherContainer extends React.Component {
       })
       .then(function() {
         that.setState({
-          loading: false,
-          error: true
+          loading: false
         });
       });
   }
   render() {
     const searchData = this.state.searchData;
     const isLoading = this.state.loading;
-    const isError = this.state.error;
     let subForm;
     let loadingGif = "";
 
@@ -146,8 +143,7 @@ class WeatherContainer extends React.Component {
           )
         ), 
         subForm, 
-        loadingGif, 
-        isError ? "There is an error loading your search , try again" : ""
+        loadingGif
       )
     );
   }

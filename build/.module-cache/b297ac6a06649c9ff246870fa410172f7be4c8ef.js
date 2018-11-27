@@ -41,11 +41,7 @@ class CityData extends React.Component {
         React.createElement("h4", null, " Local Time : ", location.localtime), 
 
         React.createElement("h5", null, " Temperature (C) : ", city.temp_c), 
-        React.createElement("h5", null, " Temperature (F) : ", city.temp_f), 
-        React.createElement("div", null, 
-          React.createElement("span", null, city.condition.text), 
-          React.createElement("img", {src: city.condition.icon})
-        )
+        React.createElement("h5", null, " Temperature (F) : ", city.temp_f)
       )
     );
   }
@@ -74,13 +70,9 @@ class WeatherContainer extends React.Component {
     e.preventDefault();
     let search = this.state.current_search;
     const that = this;
-
     this.setState({
-      loading: true,
-      searchData: {},
-      error: false
+      loading: true
     });
-
     axios
       .get(weatherUrl, {
         params: {
@@ -103,15 +95,13 @@ class WeatherContainer extends React.Component {
       })
       .then(function() {
         that.setState({
-          loading: false,
-          error: true
+          loading: false
         });
       });
   }
   render() {
     const searchData = this.state.searchData;
     const isLoading = this.state.loading;
-    const isError = this.state.error;
     let subForm;
     let loadingGif = "";
 
@@ -146,8 +136,7 @@ class WeatherContainer extends React.Component {
           )
         ), 
         subForm, 
-        loadingGif, 
-        isError ? "There is an error loading your search , try again" : ""
+        loadingGif
       )
     );
   }
