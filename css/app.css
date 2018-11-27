@@ -17,10 +17,12 @@ body {
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 60%;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   border-radius: 5px;
+  max-height: 90%;
+  overflow-y: auto;
 }
 .weather_title {
   color: white;
@@ -49,4 +51,29 @@ body {
 }
 .city_container {
   color: white;
+}
+.error_msg {
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #root {
+    margin-top: 4%;
+
+    width: 80%;
+
+    overflow-y: auto;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  #root {
+    margin-top: 2%;
+
+    width: 90%;
+
+    overflow-y: auto;
+  }
 }

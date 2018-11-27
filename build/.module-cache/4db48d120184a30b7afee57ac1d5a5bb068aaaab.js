@@ -98,8 +98,7 @@ class WeatherContainer extends React.Component {
       })
       .catch(function(error) {
         that.setState({
-          searchData: {},
-          error: true
+          searchData: {}
         });
       })
       .then(function() {

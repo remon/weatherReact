@@ -98,13 +98,13 @@ class WeatherContainer extends React.Component {
       })
       .catch(function(error) {
         that.setState({
-          searchData: {},
-          error: true
+          searchData: {}
         });
       })
       .then(function() {
         that.setState({
-          loading: false
+          loading: false,
+          error: true
         });
       });
   }
@@ -147,11 +147,7 @@ class WeatherContainer extends React.Component {
         ), 
         subForm, 
         loadingGif, 
-        isError && (
-          React.createElement("h3", {className: "error_msg"}, 
-            "There is an error loading your search , Try again"
-          )
-        )
+        !isError && React.createElement("h2", null, "You have ", unreadMessages.length, " unread messages.")
       )
     );
   }

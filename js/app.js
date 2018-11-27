@@ -98,13 +98,13 @@ class WeatherContainer extends React.Component {
       })
       .catch(function(error) {
         that.setState({
-          searchData: {}
+          searchData: {},
+          error: true
         });
       })
       .then(function() {
         that.setState({
-          loading: false,
-          error: true
+          loading: false
         });
       });
   }
@@ -147,7 +147,11 @@ class WeatherContainer extends React.Component {
         </div>
         {subForm}
         {loadingGif}
-        {isError ? "There is an error loading your search , try again" : ""}
+        {isError && (
+          <h3 className="error_msg">
+            There is an error loading your search , Try again
+          </h3>
+        )}
       </div>
     );
   }
