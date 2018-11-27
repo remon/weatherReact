@@ -31,8 +31,7 @@ class CityData extends React.Component {
   render() {
     const city = this.props.city;
     const location = this.props.location;
-    console.log(city);
-    console.log(location);
+
     return (
       <div className="city_container">
         <h3>
@@ -89,12 +88,9 @@ class WeatherContainer extends React.Component {
         }
       })
       .then(function(response) {
-        //console.log(response.data);
         that.setState({
           searchData: response.data
         });
-
-        console.log(that.state.searchData);
       })
       .catch(function(error) {
         that.setState({
