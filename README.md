@@ -2,7 +2,9 @@ A simple Weather App using React Js
 
 React is very simple and powerful Javscript library .
 
-I use  [Apiux](http://apixu.com) to fetch data 
+I use  [Apiux](http://apixu.com) to fetch data .
+
+the [Demo](https://simplereactwethapp.herokuapp.com/) .
 
 ### deploying to heroku 
 
