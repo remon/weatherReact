@@ -77,3 +77,6 @@ body {
     overflow-y: auto;
   }
 }
+.resetBtn{
+  margin-right:30px;
+}

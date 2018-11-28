@@ -23,7 +23,6 @@ class WeatherForm extends React.Component {
         React.createElement("div", {className: "sub_cont"}, 
           React.createElement("input", {
             type: "button", 
-            className: "btn btn-lg btn-info resetBtn", 
             value: "Reset Form", 
             onClick: this.props.onResetBtn}
           ), 
@@ -78,12 +77,6 @@ class WeatherContainer extends React.Component {
   resetForm(e) {
     e.preventDefault();
     console.log(" I am Clicked");
-    this.setState({
-      current_search: "",
-      error: false,
-      loading: false,
-      searchData: {}
-    });
   }
   handleSubmit(e) {
     e.preventDefault();

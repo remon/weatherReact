@@ -23,7 +23,7 @@ class WeatherForm extends React.Component {
         React.createElement("div", {className: "sub_cont"}, 
           React.createElement("input", {
             type: "button", 
-            className: "btn btn-lg btn-info resetBtn", 
+            className: "btn btn-lg btn-info", 
             value: "Reset Form", 
             onClick: this.props.onResetBtn}
           ), 

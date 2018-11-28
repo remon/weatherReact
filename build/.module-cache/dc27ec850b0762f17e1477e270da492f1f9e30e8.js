@@ -21,13 +21,8 @@ class WeatherForm extends React.Component {
         ), 
 
         React.createElement("div", {className: "sub_cont"}, 
-          React.createElement("input", {
-            type: "button", 
-            className: "btn btn-lg btn-info resetBtn", 
-            value: "Reset Form", 
-            onClick: this.props.onResetBtn}
-          ), 
-          React.createElement("button", {className: "btn btn-success btn-lg"}, "Get Data")
+          React.createElement("button", {className: "btn btn-info"}, "Reset Form "), 
+          React.createElement("button", {className: "btn btn-success btn-lg"}, " Get Data ")
         )
       )
     );
@@ -67,7 +62,6 @@ class WeatherContainer extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.resetForm = this.resetForm.bind(this);
   }
 
   handleInputChange(e) {
@@ -77,13 +71,6 @@ class WeatherContainer extends React.Component {
   }
   resetForm(e) {
     e.preventDefault();
-    console.log(" I am Clicked");
-    this.setState({
-      current_search: "",
-      error: false,
-      loading: false,
-      searchData: {}
-    });
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -154,7 +141,6 @@ class WeatherContainer extends React.Component {
           React.createElement(WeatherForm, {
             onSubmit: this.handleSubmit, 
             onChange: this.handleInputChange, 
-            onResetBtn: this.resetForm, 
             value: this.state.current_search}
           )
         ), 
